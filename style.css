@@ -3,3 +3,295 @@ Theme Name: nCoVtracker
 Author: Sungjun Choi
 Version: 1.0
 */
+
+/* body {
+  background:#e7e7e7;
+} */
+
+
+#map{
+  height:90%;
+  border-radius: 10px;
+}
+
+html, body {
+  height: 100%;
+  background: #E1E1E1;
+  margin: 0 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+* {box-sizing: border-box;}
+
+.header {
+  min-width: 1000px;
+  overflow: hidden;
+  background-color: #BCC6BC;
+  height:70px;
+  padding: 0px 40px 0px 50px;
+  border-radius: 0px 0px 10px 10px;
+}
+
+
+
+/* .header a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 40px;
+  line-height: 25px;
+  border-radius: 10px;
+} */
+
+.header a.logo {
+  width: 10%;
+  float: left;
+}
+
+
+/* Navigation Menus */
+.site-nav {
+  /* width: 30%; */
+  float: right;
+  text-align: right;
+  text-decoration: none;
+  font-size: 30px;
+}
+.site-nav ul{
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav ul:before, .site-nav ul:after { content: ""; display: table; }
+.site-nav ul:after { clear: both; }
+.site-nav ul { *zoom: 1; }
+
+.site-nav ul li{
+  list-style: none;
+  float: right;
+}
+
+/*  Site Header Menu */
+.header nav ul li{
+  margin-top: 2px;
+  margin-left: 10px;
+}
+
+.header nav ul li a:link,
+.header nav ul li a:visited {
+  color: black;
+  display: block;
+  padding: 10px 18px;
+}
+.header nav ul li a:hover{
+  color: white;
+  text-decoration: none;
+  background-color: #ECECEC;
+  border-radius: 10px;
+}
+
+.header nav ul li.current-menu-item a,
+.header nav ul li.current-menu-ancestor a{
+    background: DodgerBlue;
+    color: white;
+    border-radius: 10px;
+}
+
+/* Main Column */
+.main-column{
+  width: 66%;
+  float: left;
+}
+
+/* Side Column */
+.secondary-column {
+  width: 30%;
+  float: right;
+}
+
+
+.secondHeader {
+  width: 100%;
+  height: 45px;
+  padding-left: 40px;
+}
+
+/* Children Links */
+.children-links {
+  font-size: 25px;
+  float: left;
+}
+
+.children-links li{
+  margin-right: 20px;
+}
+
+.children-links a:link,
+.children-links a:visited{
+  color: #555;
+}
+
+
+.secondHeader nav ul li a:link,
+.secondHeader nav ul li a:visited {
+  color: black;
+  display: block;
+  padding: 6px 10px;
+}
+
+.secondHeader nav ul li a:hover{
+  background-color: #BCC6BC;
+  border-radius: 10px;
+  color: black;
+  text-decoration: none;
+}
+
+/* .secondHeader nav ul li.current-menu-ancestor a:link,
+.secondHeader nav ul li.current-menu-ancestor a:visited{
+  background: DodgerBlue;
+  color: white;
+  border-radius: 10px;
+} */
+
+.secondHeader nav ul li.current-menu-item a,
+.secondHeader nav ul li.current-menu-ancestor a {
+    background-color: DodgerBlue;
+    border-radius: 10px;
+    color: white;
+
+}
+
+.current-menu-ancestor a{
+  background-color: DodgerBlue;
+}
+
+.card .card_body {
+  text-align: center;
+}
+
+.card_body h3{
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#second-header {
+  height: 67px;
+  padding: 5px;
+  text-align: center;
+}
+
+#calendar_wrap {
+  float: right;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-right: 55px;
+}
+
+.widget-title{
+  padding-top: 20px;
+}
+
+@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+  .header-right {
+    float: none;
+  }
+}
+.container{
+  min-width: 1000px;
+}
+
+/* The container must be positioned relative: */
+.custom-select {
+  padding: 0;
+  height: 56px;
+  position: relative;
+  font-size:35px;
+  font-family: Arial;
+  border-radius: 10px;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element: */
+}
+
+.select-selected {
+  background-color: DodgerBlue;
+  border-radius: 10px;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 21px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 12px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 0px 20px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 10px;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  border-radius: 10px;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 102px;
+}
+
+.widget-item {
+  padding-bottom: 10px;
+  border-bottom: 3px solid #E1E1E1;
+  margin-bottom: 20px;
+}
