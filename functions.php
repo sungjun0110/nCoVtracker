@@ -1,6 +1,5 @@
 <?php
 
-
 function load_stylesheets()
 {
   wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css',
@@ -13,18 +12,20 @@ function load_stylesheets()
 }
 add_action('wp_enqueue_scripts', 'load_stylesheets');
 
+
 function include_jquery()
 {
     wp_deregister_script('jquery');
-    wp_enqueue_script('jquery', get_template_directory_uri() . '/js/jquery-3.4.1.min.js', '', 1, true);
+    wp_enqueue_script('jquery', get_template_directory_uri() . '/js/jquery-3.4.1.min.js', '', '1', false);
 
     add_action('wp_enqueue_scripts', 'jquery');
 }
 add_action('wp_enqueue_scripts', 'include_jquery');
 
+
 function loadjs()
 {
-  wp_register_script('customjs', get_template_directory_uri() . '/js/scripts.js', array(), 1, true);
+  wp_register_script('customjs', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1', false);
   wp_enqueue_script('customjs');
 }
 add_action('wp_enqueue_scripts', 'loadjs');
@@ -47,6 +48,39 @@ add_image_size('largest', 800, 800, true);
 /* Activate HTML5 feature */
 add_theme_support('html5', array('comment-list', 'comment-form', 'search-form', 'gallery', 'caption'));
 
+
+function wpb_postsbycategory() {
+// the query
+$the_query = new WP_Query( array( 'category_name' => 'News', 'posts_per_page' => 1 ) );
+
+// The Loop
+if ( $the_query->have_posts() ) {
+    $string .= '<ul class="postsbycategory widget_recent_entries">';
+    while ( $the_query->have_posts() ) {
+        $the_query->the_post();
+            if ( has_post_thumbnail() ) {
+            $string .= '<li>';
+            $string .= '<a href="' . get_the_permalink() .'" rel="bookmark">' . get_the_post_thumbnail($post_id, array( 50, 50) ) . get_the_title() .'</a></li>';
+            } else {
+            // if no featured image is found
+            $string .= '<li><a href="' . get_the_permalink() .'" rel="bookmark">' . get_the_title() .'</a></li>';
+            }
+            }
+    } else {
+    // no posts found
+}
+$string .= '</ul>';
+
+return $string;
+
+/* Restore original Post Data */
+wp_reset_postdata();
+}
+// Add a shortcode
+add_shortcode('categoryposts', 'wpb_postsbycategory');
+
+// Enable shortcodes in text widgets
+add_filter('widget_text', 'do_shortcode');
 
 
 // Add Widget Areas

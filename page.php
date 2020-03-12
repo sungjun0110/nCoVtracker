@@ -18,8 +18,6 @@
 </div> -->
 
 <div class="container pt-3 pb-3">
-  <div class="main-column">
-
   <?php if (have_posts()) : while(have_posts()) : the_post();?>
     <div class="card mb-4">
       <div class="card_body m-3">
@@ -31,15 +29,6 @@
       </div>
     </div>
     <?php endwhile; endif;?>
-
-  </div>
-  <div class="secondary-column">
-    <div class="card mb-4">
-      <div class="card_body m-3">
-        <?php dynamic_sidebar('sidebar1');?>
-      </div>
-    </div>
-  </div>
 </div>
 
 <?php get_footer();?>

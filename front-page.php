@@ -1,169 +1,143 @@
 <?php get_header();?>
 
-<?php
-  include_once "data.php";
-?>
+<div id="main-screen">
+  <div class="screen side left">
+    <div class="card mb-2">
+      <div class="card_body m-2">
+          <!-- <a href='http://localhost/wordpress/?am_force_theme_layout=mobile'>Mobile</a> -->
+        <div class='left-top'>
+          <h3>Board</h3>
+          <b id='update-time'><br></b>
+          </b>
+            <a href='http://ncovtracker.com/?am_force_theme_layout=mobile'><br>Mobile Site</a>
+          </b>
+
+          <b><br><br>I am solely keeping up this website, please help maintain nCoVTracker with your donation!</b>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <input type="hidden" name="cmd" value="_s-xclick" />
+          <input type="hidden" name="hosted_button_id" value="P7E4KSBZVAZ2E" />
+          <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+          <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+          </form>
+
+        </div>
+      </div>
+    </div>
+    <div class="card mb-2">
+      <div class="card_body m-2">
+        <h3>Today's News</h3>
+        <iframe id="todays-news" width="370" height="208" src=""
+        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+        <div class="news-controller">
+          <a href="#" id="prev">Prev</a>
+          <a href="#" id="next">Next</a>
+        </div>
+      </div>
+    </div>
 
 
-<div id="second-header">
-  <div class="custom-select">
 
+    <div class="card mb-2" style="height: 300px; overflow-y: hidden;">
+      <div class="card_body m-2">
+        <h4 id="video-title">How to Wash Your Hands Properly</h4>
+        <iframe id='video' width="370" height="208"
+          src="https://www.youtube.com/embed/mcOdaqQ_IAU"
+          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+
+        <div class="news-controller">
+          <a href="#" id="prev2" style="display:none">Prev</a>
+          <a href="#" id="next2">Next</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="111589682">
+    <script type="text/javascript">
+        try {
+            window._mNHandle.queue.push(function (){
+                window._mNDetails.loadTag("111589682", "300x250", "111589682");
+            });
+        }
+        catch (error) {}
+    </script>
+    </div>
+  </div>
+
+  <div class="screen middle">
+    <div class="middle-top">
+      <div id="map"></div>
+    </div>
+    <div class="middle-bot left">
+      <div class="card mb-2" style="border:2px solid #2f2d8640; border-radius: 7px;">
+        <div class="card_body m-2 current-cases">
+          <h5>Current Cases</h5>
+          <p>Confirmed</p>
+          <p id='confirmed'>0</p>
+          <p>Death</p>
+          <p id='death'>0</p>
+          <p>Recovery</p>
+          <p id='recovery'>0</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="middle-bot right">
+      <div class="chart-controller">
+        <div class='controller-buttons'>
+          <button type='button' id="country" class='selected'>Country Detail</button>
+          <button type='button' id="world">Comparison</button>
+        </div>
+        <div class="chart-search">
+          <input id='chart-search-input' type='hidden' placeholder='Enter country name (max: 7)'>
+          <table class="search-table">
+          <tbody id='livesearch'></tbody>
+          </table>
+        </div>
+
+        <!-- <select id="start-date2" style='display: block'>
+          <option value='' disabled selected>Start Date</option>
+        </select> -->
+        <select id="start-date" style='visibility: hidden'>
+          <option value='' disabled selected>Start Date</option>
+        </select>
+
+        <button type='button' id="reset" style='visibility: hidden;'>Reset</button>
+
+      </div>
+      <div class="card mb-2">
+        <div class="card_body m-2 chart-container" >
+          <canvas id="ncovChart" style="background-image: url('asset/chartimg.png');
+            background-repeat: no-repeat; background-position: center;"></canvas>
+          <canvas id="ncovChart2" style="background-image: url('asset/chartimg.png');
+            background-repeat: no-repeat; background-position: center;"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen side right">
+
+        <div class="table-search-bar">
+          <input id="table-search-input" type="text" placeholder="Enter country name">
+        </div>
+
+    <div class="card mb-2" style='width:376px;'>
+      <div class="card_body m-2">
+        <table id="ncovTable" style='width:357px;'></table>
+      </div>
+    </div>
   </div>
 </div>
 
-<div id="map"></div>
-
-<script type="text/javascript">
-  var infected_cases = <?php echo json_encode($data, true);?>;
-  var infected_cases_canada = <?php echo json_encode($data_CA, true);?>;
-  var infected_cases_world = <?php echo json_encode($data_world, true); ?>;
-
-  var locations = [];
-  var cases = [];
-  var locations_CA = [];
-  var cases_CA = [];
-  var locations_world = [];
-  var cases_world = [];
-
-  // locations in US
-  for (var i = 0; i < infected_cases.length; i++) {
-    locations.push({lat: parseFloat(infected_cases[i]["lat"]), lng: parseFloat(infected_cases[i]["lng"])});
-  }
-  // locations in CA
-  for (var i = 0; i < infected_cases_canada.length; i++) {
-    locations_CA.push({lat: parseFloat(infected_cases_canada[i]["lat"]), lng: parseFloat(infected_cases_canada[i]["lng"])});
-  }
-  // case details in US
-  for (var i = 0; i < infected_cases.length; i++) {
-    cases.push([infected_cases[i]["case_index"], infected_cases[i]["date"], infected_cases[i]["address"]]);
-  }
-  // case details in CA
-  for (var i = 0; i < infected_cases_canada.length; i++) {
-    cases_CA.push([infected_cases_canada[i]["case_index"], infected_cases_canada[i]["date"], infected_cases_canada[i]["address"]]);
-  }
-  // console.log(infected_cases); // for debugging
-  // console.log(country_coords);
-
-  // world locations
-  for (var i = 0; i < infected_cases_world.length; i++) {
-    locations_world.push({lat: parseFloat(infected_cases_world[i]["lat"]), lng: parseFloat(infected_cases_world[i]["lng"])});
-  }
-  // world cases details
-  for (var i = 0; i < infected_cases_world.length; i++) {
-    cases_world.push([infected_cases_world[i]["name"], infected_cases_world[i]["confirmed"], infected_cases_world[i]["death"], infected_cases_world[i]["recovery"]]);
-  }
-
-  var map;
-  function initMap(){
-    // Map options
-    var options = {
-      zoom:4,
-      center:{lat:44.669386, lng:-96.474131},
-      minZoom:2,
-      maxZoom:8,
-    }
-    // New map
-    map = new google.maps.Map(document.getElementById('map'), options);
-
-    var markImage = 'https://github.com/sungjun0110/googleMapApi/blob/master/regularMarker.png?raw=true';
-    var worldMarkerImage = 'https://github.com/sungjun0110/nCoVtracker/blob/master/worldMarker.png?raw=true';
-    var infowindow = new google.maps.InfoWindow();
-    var usMarker = 'https://github.com/sungjun0110/nCoVtracker/blob/master/USmarker.png?raw=true';
-    var caMarker = 'https://github.com/sungjun0110/nCoVtracker/blob/master/CAmarker.png?raw=true';
-    var customMarker = 'https://github.com/sungjun0110/nCoVtracker/blob/master/customMarker.png?raw=true';
-
-    // markers for US cases
-    var markers = locations.map(function(location, i) {
-      var marker = new google.maps.Marker({
-        position: locations[i],
-        title: "Case No. " + cases[i][0],
-        icon: usMarker,
-        map:map
-      });
-      var content = "Case No. " + cases[i][0] + " in " + cases[i][2] + "<br>" + "Date: " + cases[i][1];
-
-      google.maps.event.addListener(marker,'click', function(evt) {
-        infowindow.setContent(content);
-        infowindow.open(map, marker);
-      })
-      return marker;
-    });
-
-    // markers for Canadian cases
-    var markers_CA = locations_CA.map(function(location, i) {
-      var marker = new google.maps.Marker({
-        position: locations_CA[i],
-        title: "Case No. " + cases_CA[i][0],
-        icon: caMarker,
-        map:map
-      });
-      var content = "Case No. " + cases_CA[i][0] + " in " + cases_CA[i][2] + "<br>" + "Date: " + cases_CA[i][1];
-
-      google.maps.event.addListener(marker,'click', function(evt) {
-        infowindow.setContent(content);
-        infowindow.open(map, marker);
-      })
-      return marker;
-    });
-
-    // markers for world cases
-    var world_markers = locations_world.map(function(location, i) {
-      var marker = new google.maps.Marker({
-        position: locations_world[i],
-        title: cases_world[i][0],
-        icon: worldMarkerImage,
-        map:map
-      });
-      var content = cases_world[i][1] + " confirmed cases in " + cases_world[i][0];
-
-      google.maps.event.addListener(marker,'click', function(evt) {
-        infowindow.setContent(content);
-        infowindow.open(map, marker);
-      })
-      return marker;
-    });
-
-    map.addListener('click', function(e) {
-      placeMarker(e.latLng, map);
-    });
-
-    function placeMarker(latLng, map) {
-      var marker = new google.maps.Marker({
-        position: latLng,
-        map: map,
-        icon: customMarker,
-      });
-
-      google.maps.event.addListener(marker,'click', function(evt) {
-        marker.setMap(null);
-      })
-  }
-}
-
-  // console.log(cases_CA);
-  // console.log(cases);
-  console.log(locations_world);
-  var htmlcode = '<select>';
-  for (var i = 0; i < cases_world.length; i++) {
-    htmlcode += '\n<option value="' + i + '">' + cases_world[i][0] + " - "
-    + " Confirmed: " + cases_world[i][1]
-    + " Deaths: " + cases_world[i][2]
-    + " Recoveries: " + cases_world[i][3] + '</option>\n';
-  }
-  htmlcode += "</select>";
-
-  function moveTo(sel) {
-    // var value = sel.value;
-    console.log(sel);
-    map.panTo(locations_world[sel]);
-  }
-
-  document.getElementsByClassName('custom-select')[0].innerHTML = htmlcode;
-</script>
-<script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js">
 </script>
 <script async defer
-src="https://maps.googleapis.com/maps/api/js?key=[[[API KEY]]]&callback=initMap">
+src="https://maps.googleapis.com/maps/api/js?key=[key]">
 </script>
+
 
 <?php get_footer();?>

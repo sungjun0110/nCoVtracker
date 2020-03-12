@@ -4,35 +4,232 @@ Author: Sungjun Choi
 Version: 1.0
 */
 
-/* body {
-  background:#e7e7e7;
-} */
-
-
-#map{
-  height:90%;
-  border-radius: 10px;
-}
 
 html, body {
-  height: 100%;
-  background: #E1E1E1;
-  margin: 0 0;
-  padding: 0;
+  height: calc(100% - 80px);
+  width: auto;
+  background: #dbdbdb;
   font-family: Arial, Helvetica, sans-serif;
 }
-* {box-sizing: border-box;}
 
-.header {
-  min-width: 1000px;
-  overflow: hidden;
-  background-color: #BCC6BC;
-  height:70px;
-  padding: 0px 40px 0px 50px;
-  border-radius: 0px 0px 10px 10px;
+#main-screen {
+  height: 100%;
+  width: 1800px;
+  margin: 10px auto;
+}
+
+.screen{
+  padding: 0 5px;
+  float: left;
+}
+
+.screen.side{
+  width:400px;
 }
 
 
+ins{
+  width: 370px;
+}
+
+.screen.side.right{
+  min-height: 750px;
+  height: 1180px;
+  font-size: 16px;
+  overflow-y: auto;
+}
+
+.screen.middle{
+  height:1180px;
+  width: 1000px;
+
+}
+
+.middle-top{
+  height: 600px;
+  padding: 0 0 10px;
+}
+
+.middle-bot{
+  height: 580px;
+  padding-bottom: 10px;
+}
+
+.middle-bot.left{
+  width: 15%;
+  min-height: 290px;
+  float: left;
+}
+
+#confirmed{
+  background-color: #ff9b1e80;
+  border-radius: 7px;
+}
+
+#death{
+  background-color: #ff1e1e80;
+  border-radius: 7px;
+}
+
+#recovery{
+  background-color: #1E90FF80;
+  border-radius: 7px;
+}
+
+.middle-bot.right{
+  padding-left: 10px;
+
+  float: left;
+}
+
+#table-search-input{
+  width: 376px;
+  padding: 3px 7px;
+  margin: 0 0 10px;
+  background-color: #f3f3f3;
+  border: 2px solid #ff9b1e70;
+  border-radius: 7px;
+}
+
+#table-search-input:focus{
+  outline-width: 0;
+  border: 2px solid #1E90FF80;
+  border-radius: 7px;
+}
+
+.chart-container {
+  position: relative;
+  margin: auto;
+  height: 525px;
+  width: 810px;
+}
+
+.chart-controller{
+  margin-left: 10px;
+  height: 30px;
+}
+
+.controller-buttons button{
+  outline-width: 0;
+  float: left;
+  border-top: 1px solid #cfcfcf;
+  border-left: 1px solid #cfcfcf;
+  border-right: 1px solid #cfcfcf;
+  border-bottom: 3px solid #ccc;
+  border-radius: 7px 7px 0 0;
+  color: black;
+  margin: 0 2px;
+  text-decoration: none;
+}
+
+.controller-buttons button:hover{
+  border-bottom: 3px solid #ff9b1e70;
+}
+
+.controller-buttons button:active{
+  border-bottom: 3px solid DodgerBlue;
+}
+
+.controller-buttons button.selected{
+  border-bottom: 3px solid DodgerBlue;
+}
+
+#start-date{
+  width: 110px;
+  height: 28px;
+  background-color: #f3f3f3;
+  border: 2px solid #ff9b1e70;
+  float: left;
+}
+
+#start-date:focus{
+  outline-width: 0;
+  border: 2px solid #1E90FF80
+}
+
+#reset{
+  outline-width: 0;
+  float: left;
+  border: 1px solid #cfcfcf;
+  border-radius: 7px;
+  color: black;
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+.chart-search{
+    width: 230px;
+    margin-right: 20px;
+    float: left;
+}
+
+#chart-search-input{
+  width:230px;
+  height: 28px;
+  margin: 0 0 0 10px;
+  padding: 0 5px;
+  background-color: #f3f3f3;
+  border: 2px solid #ff9b1e70;
+  float: left;
+}
+
+table.search-table{
+  width:230px;
+  float:left;
+  margin-left: 10px;
+  margin-top: 28px;
+  position: absolute;
+  z-index: 2;
+}
+
+#chart-search-input:focus{
+  outline-width: 0;
+  border: 2px solid #1E90FF80
+}
+
+.news-controller a{
+  width: 30px;
+  color: black;
+  margin: 0 30px;
+}
+
+#map{
+  height: 100%;
+  border-radius: 7px;
+    border: 1px solid #ccc;
+}
+
+
+.mobile{
+  margin-right: 30px;
+  float:right;
+}
+
+header {
+  width:auto;
+  min-width: 1800px;
+  height: 70px;
+  background-color: #f3f3f3;
+  border-bottom: 1px solid #ccc;
+}
+
+.header {
+  width: 1800px;
+  margin: 0 auto;
+  overflow: hidden;
+  font-weight: bold;
+  padding: 0px 40px 0px 50px;
+}
+
+.header-left{
+  width:50%;
+  padding-top: 9px;
+  float:left;
+}
+.header-right{
+  width:50%;
+  float:right;
+}
 
 /* .header a {
   float: left;
@@ -45,8 +242,8 @@ html, body {
   border-radius: 10px;
 } */
 
+
 .header a.logo {
-  width: 10%;
   float: left;
 }
 
@@ -58,6 +255,7 @@ html, body {
   text-align: right;
   text-decoration: none;
   font-size: 30px;
+  margin-top: 8px;
 }
 .site-nav ul{
   margin: 0;
@@ -75,7 +273,7 @@ html, body {
 
 /*  Site Header Menu */
 .header nav ul li{
-  margin-top: 2px;
+  margin-top: auto;
   margin-left: 10px;
 }
 
@@ -83,32 +281,24 @@ html, body {
 .header nav ul li a:visited {
   color: black;
   display: block;
-  padding: 10px 18px;
+  padding: 4px 10px;
 }
 .header nav ul li a:hover{
-  color: white;
+  color: black;
   text-decoration: none;
-  background-color: #ECECEC;
-  border-radius: 10px;
+  background-color: #ff9b1e70;
+  border-radius: 7px;
 }
 
 .header nav ul li.current-menu-item a,
 .header nav ul li.current-menu-ancestor a{
-    background: DodgerBlue;
-    color: white;
-    border-radius: 10px;
+    color: DodgerBlue;
 }
 
 /* Main Column */
 .main-column{
-  width: 66%;
+  width: 100%;
   float: left;
-}
-
-/* Side Column */
-.secondary-column {
-  width: 30%;
-  float: right;
 }
 
 
@@ -143,7 +333,7 @@ html, body {
 
 .secondHeader nav ul li a:hover{
   background-color: #BCC6BC;
-  border-radius: 10px;
+  border-radius: 7px;
   color: black;
   text-decoration: none;
 }
@@ -158,13 +348,18 @@ html, body {
 .secondHeader nav ul li.current-menu-item a,
 .secondHeader nav ul li.current-menu-ancestor a {
     background-color: DodgerBlue;
-    border-radius: 10px;
+    border-radius: 7px;
     color: white;
 
 }
 
 .current-menu-ancestor a{
   background-color: DodgerBlue;
+}
+
+.card {
+  background-color: #f0f0f0;
+  border-radius: 7px;
 }
 
 .card .card_body {
@@ -226,7 +421,7 @@ html, body {
 
 .select-selected {
   background-color: DodgerBlue;
-  border-radius: 10px;
+  border-radius: 7px;
 }
 
 /* Style the arrow inside the select element: */
@@ -255,7 +450,7 @@ html, body {
   border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
   cursor: pointer;
   user-select: none;
-  border-radius: 10px;
+  border-radius: 7px;
 }
 
 /* Style items (options): */
@@ -266,7 +461,7 @@ html, body {
   left: 0;
   right: 0;
   z-index: 99;
-  border-radius: 10px;
+  border-radius: 7px;
 }
 
 /* Hide the items when the select box is closed: */
@@ -294,4 +489,68 @@ html, body {
   padding-bottom: 10px;
   border-bottom: 3px solid #E1E1E1;
   margin-bottom: 20px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 6px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #1E90FF80;
+  border-radius: 7px;
+}
+
+#livesearch{
+  background-color: #dbdbdb;
+}
+
+#livesearch tr:hover {
+  background-color: #1E90FF80;
+}
+
+#livesearch td{
+  padding: 7px 5px;
+}
+
+#table-body tr:nth-child(odd) {
+  background-color: #dbdbdb;
+}
+
+#table-body tr:hover {
+  background-color: #1E90FF80;
+}
+
+#table-body tr.selected {
+  background-color: #1E90FF80;
+}
+
+#ncovTable th {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+iframe {
+  border-radius: 7px;
+}
+
+#ncovChart{
+  position: absolute;
+  z-index: 1;
+}
+
+#ncovChart2{
+  position: absolute;
+  z-index: -1;
+}
+
+.select-visibility{
+  display: none;
 }

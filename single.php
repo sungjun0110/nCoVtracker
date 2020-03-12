@@ -3,8 +3,6 @@
 
 
 <div class="container pt-3 pb-3">
-
-  <div class="main-column">
     <div class="card mb-4">
       <div class="card_body m-3">
         <h1><?php the_title();?></h1>
@@ -22,15 +20,6 @@
         <?php endwhile; endif;?>
       </div>
     </div>
-  </div>
-
-  <div class="secondary-column">
-    <div class="card mb-4">
-      <div class="card_body m-3">
-        <?php dynamic_sidebar('sidebar1');?>
-      </div>
-    </div>
-  </div>
 
 </div>
 
